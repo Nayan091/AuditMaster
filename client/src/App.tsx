@@ -14,12 +14,13 @@ import { useApp } from "./context/useApp";
 import Loading from "./components/Loading"
 
 export default function App() {
-    const {user} = useApp();
+    const {user, loading} = useApp();
     const location = useLocation();
 
     const hideNavbar = ["/login", "/register"].includes(location.pathname);
 
-    if(Loading) return <Loading/>
+    if (loading) return <Loading />;
+
     return (
         <>
             <Toaster />
