@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Target, Plus, RefreshCw, Trash2, TrendingUp, TrendingDown, Minus, ExternalLink, Clock, Loader2, X, Search, Globe, AlertCircle, Eye, EyeOff, Filter, ArrowUpDown } from "lucide-react";
 // import { dummyRankings } from "../assets/assets";
-import { useApp } from "../context/appContext";
+import { useApp } from "../context/useApp";
 
 interface KeywordItem {
     _id: string;

@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useApp } from "../context/appContext";
+import { useApp } from "../context/useApp";
 
 export default function ProtectedRoute() {
     const {token, loading} = useApp();

@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Target, Globe, Clock, TrendingUp, TrendingDown, Minus, RefreshCw, AlertCircle, ExternalLink, Trophy, Users, Calendar, Loader2 } from "lucide-react";
 // import { dummyWebsiteRanking } from "../assets/assets";
-import { useApp } from "../context/appContext";
+import { useApp } from "../context/useApp";
 
 interface RankHistoryEntry {
     date: string;
@@ -287,13 +287,15 @@ export default function RankDetail() {
 
     useEffect(() => {
         (async () => await fetchTracking())();
+         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id]);
 
     useEffect(() => {
-        if (tracking && tracking.rankHistory.length > 0 && chartRef.current) {
-            drawChart();
-        }
-    }, [tracking, activeTab]);
+            if (tracking && tracking.rankHistory.length > 0 && chartRef.current) {
+                drawChart();
+            }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, [tracking, activeTab]);
 
     if (loading) {
         return (

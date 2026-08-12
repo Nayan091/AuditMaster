@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Clock, Trash2, ExternalLink, Search, AlertCircle, Loader2, Filter, ArrowUpDown } from "lucide-react";
 import ScoreGauge from "../components/ScoreGauge";
 // import { dummyAnalysisData } from "../assets/assets";
-import { useApp } from "../context/appContext";
+import { useApp } from "../context/useApp";
 
 interface AnalysisItem {
     _id: string;

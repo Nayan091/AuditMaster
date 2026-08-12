@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { SearchIcon, ArrowRightIcon, BarChart3Icon, GlobeIcon, TrendingUpIcon } from "lucide-react";
+import { SearchIcon, ArrowRightIcon, GlobeIcon, TrendingUpIcon } from "lucide-react";
 import AnalysesCard from "../components/AnalysesCard";
 // import { dummyAnalysisData } from "../assets/assets";
-import { useApp } from "../context/appContext";
+import { useApp } from "../context/useApp";
 
 interface AnalysisSummary {
     _id: string;
@@ -63,6 +63,7 @@ export default function Dashboard() {
 
     useEffect(() => {
         (async () => await fetchRecent())();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

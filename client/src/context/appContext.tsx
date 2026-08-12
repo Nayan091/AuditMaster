@@ -1,9 +1,6 @@
 import type { AxiosInstance } from "axios";
-import axios from "axios";
-// import { error } from "node:console";
-// import { config } from "node:process";
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-// import { useSearchParams } from "react-router-dom";
+import axios, { type AxiosError } from "axios";
+import { createContext, useEffect, useState, type ReactNode } from "react";
 
 import { useMemo } from "react"; // add to your React import
 
@@ -27,7 +24,8 @@ interface AppContextType{
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
-const AppContext = createContext <AppContextType | undefined>(undefined)
+// eslint-disable-next-line react-refresh/only-export-components
+export const AppContext = createContext <AppContextType | undefined>(undefined)
 
 export function AppProvider({children}:{children: ReactNode}){
     const [user, setUser] = useState<User | null>(null)
@@ -50,17 +48,6 @@ export function AppProvider({children}:{children: ReactNode}){
     return instance;
     }, []);
 
-    // Update axios header when token changes
-    api.interceptors.request.use((config)=>{
-        const token = localStorage.getItem("token")
-
-        if(token){
-            config.headers.Authorization = `Bearer ${token}`
-        }
-
-        return config;
-    })
-
     const loadUser = async () => {
         if (!token) {
             setLoading(false);
@@ -71,7 +58,7 @@ export function AppProvider({children}:{children: ReactNode}){
             if (data.success) {
                 setUser(data.user)
             }
-        } catch (error) {
+        } catch {
             localStorage.removeItem("token");
             setToken(null)
             setUser(null)
@@ -80,7 +67,9 @@ export function AppProvider({children}:{children: ReactNode}){
     }
 
     useEffect(()=>{
-    loadUser();
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        loadUser();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     const login = async (email:string,password:string) => {
@@ -93,8 +82,9 @@ export function AppProvider({children}:{children: ReactNode}){
                 return {success : true}
             }
             return {success:false , message : res.data.message}
-        } catch (error:any) {
-            return {success:false , message : error.response?.data?.message || "Login Failed"}
+        } catch (error) {
+            const err = error as AxiosError<{ message?: string }>;
+            return {success:false , message : err.response?.data?.message || "Login Failed"}
         }
     }
     const register = async (name:string,email:string,password:string) => {
@@ -107,8 +97,9 @@ export function AppProvider({children}:{children: ReactNode}){
                 return {success : true}
             }
             return {success:false , message : res.data.message}
-        } catch (error:any) {
-            return {success:false , message : error.response?.data?.message || "Registration Failed"}
+        } catch (error) {
+            const err = error as AxiosError<{ message?: string }>;
+            return {success:false , message : err.response?.data?.message || "Login Failed"}
         }
     }
     const logout = async () => {
@@ -121,10 +112,4 @@ export function AppProvider({children}:{children: ReactNode}){
     return <AppContext.Provider value={value}>
         {children}
     </AppContext.Provider>
-}
-
-export function useApp(){
-    const context = useContext(AppContext);
-    if (!context) throw new Error("UseApp must be used within AppProvider");
-    return context;
 }

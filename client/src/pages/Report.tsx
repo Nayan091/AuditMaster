@@ -4,7 +4,7 @@ import ScoreGauge from "../components/ScoreGauge";
 import IssueCard from "../components/IssueCard";
 import { ArrowLeft, Globe, Clock, FileText, Image, Link2, Heading, Tag, AlertCircle, ExternalLink, Type, Search } from "lucide-react";
 // import { dummyWebsiteAnalysis } from "../assets/assets";
-import { useApp } from "../context/appContext";
+import { useApp } from "../context/useApp";
 
 interface AnalysisData {
     _id: string;
@@ -114,6 +114,7 @@ export default function Report() {
 
     useEffect(() => {
         (async () => await fetchAnalysis())();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id]);
 
     if (loading) {
