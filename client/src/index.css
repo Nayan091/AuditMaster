@@ -1,0 +1,295 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@100..900&display=swap");
+@import "tailwindcss";
+
+.headline-serif {
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+@theme {
+    /* Colors variables */
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-border: var(--border);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-dark: var(--primary-dark);
+    --color-accent: var(--accent);
+
+    --color-success: var(--success);
+    --color-warning: var(--warning);
+    --color-danger: var(--danger);
+
+    --color-glass-bg: var(--glass-bg);
+    --color-glass-border: var(--glass-border);
+}
+
+:root {
+    /* Light Mode — matches AuditPro AI reference */
+    --background: #f4f9f4;
+    --foreground: #1e293b;
+    --card: #ffffff;
+    --border: rgba(30, 41, 59, 0.08);
+    --muted: #eef5ee;
+    --muted-foreground: #475569;
+
+    --primary: #457b59;
+    --primary-dark: #2c4b3a;
+    --accent: #457b59;
+
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+
+    --glass-bg: rgba(255, 255, 255, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.4);
+
+    --scroll-track: #eef5ee;
+    --scroll-thumb: #c8d6c0;
+    --scroll-thumb-hover: #9cb08e;
+
+    --hero-gradient: radial-gradient(circle at 80% 20%, #a7f3d0 0%, transparent 40%),
+                      radial-gradient(circle at 20% 80%, #fef3c7 0%, transparent 40%),
+                      radial-gradient(circle at 50% 50%, #dcfce7 0%, #ecfdf5 100%);
+
+    --dot-color:var(--primary-dark);
+
+    --footer-bg: var(--primary);
+}
+
+
+.dark {
+  /* Backgrounds & UI Base */
+  --background: #080C0B;
+  --foreground: #F5F7F6;
+  --card: #0D1210;
+  --border: rgba(245, 247, 246, 0.08);
+  --muted: #141B18;
+  --muted-foreground: #9CA8A2;
+
+  /* Brand - Premium Emerald Green */
+  --primary: #16A34A;
+
+  --primary-dark: #16A34A;
+  --accent: #4ADE80;
+
+  /* Status */
+  --success: #22C55E;
+  --warning: #FBBF24;
+  --danger: #F87171;
+
+  /* Glass & Scrollbar */
+  --glass-bg: rgba(34, 197, 94, 0.03);
+  --glass-border: rgba(34, 197, 94, 0.08);
+
+  --scroll-track: transparent;
+  --scroll-thumb: #202A25;
+  --scroll-thumb-hover: #2D3A34;
+
+  /* Hero Gradient */
+  --hero-gradient:
+    radial-gradient(
+      ellipse 60% 50% at 50% 45%,
+      rgba(34, 197, 94, 0.12),
+      transparent 70%
+    ),
+    #080C0B;
+
+  /* Background Dots */
+  --dot-color: rgb(160, 234, 187);
+
+  /* Footer */
+  --footer-bg: #081a0e;
+}
+
+html {
+    color-scheme: light dark;
+}
+
+body {
+    font-family: "Outfit", sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
+    /* overflow-x: hidden; */
+}
+
+button {
+    cursor: pointer;
+}
+
+input,
+textarea,
+select,
+button {
+    font-family: inherit;
+}
+
+.dm-serif {
+    font-family: "DM Serif Display", serif;
+}
+
+.outfit {
+    font-family: "Outfit", sans-serif;
+}
+
+.glass {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+}
+
+.dark .glass {
+    background: var(--card);
+    border: 1px solid var(--border);
+}
+
+.glass-strong {
+    background: var(--glass-bg);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--glass-border);
+}
+
+/* gradients */
+.gradient-text {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.gradient-bg {
+    background: var(--primary);
+}
+
+/* Animations */
+
+@keyframes move-forever {
+    0% {
+        transform: translate3d(-90px, 0, 0);
+    }
+    100% {
+        transform: translate3d(85px, 0, 0);
+    }
+}
+
+.parallax > use {
+    animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+
+.parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+}
+
+.parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+}
+
+.parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+}
+
+.parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+}
+
+/* Score and badges colors */
+.score-good {
+    color: var(--success);
+}
+.score-medium {
+    color: var(--warning);
+}
+.score-poor {
+    color: var(--danger);
+}
+
+.score-bg-good {
+    background-color: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.2);
+    border-width: 1px;
+}
+.score-bg-medium {
+    background-color: rgba(245, 158, 11, 0.1);
+    border-color: rgba(245, 158, 11, 0.2);
+    border-width: 1px;
+}
+.score-bg-poor {
+    background-color: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.2);
+    border-width: 1px;
+}
+
+.severity-critical {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+.severity-warning {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--warning);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+}
+.severity-info {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--accent);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+/* Background Patterns */
+/* .bg-dot-pattern {
+    background-image: radial-gradient(var(--primary) 1px, transparent 1px);
+    background-size: 24px 24px;
+} */
+
+/* Background Patterns */
+.bg-dot-pattern {
+    /* background-image: radial-gradient(var(--primary) 1.5px, transparent 1.5px); */
+    background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
+    opacity: 0.15;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--scroll-track);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--scroll-thumb);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scroll-thumb-hover);
+}
+
+/* Floating animation */
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+.animate-float-delayed {
+    animation: float 4s ease-in-out infinite;
+    animation-delay: 1s;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--foreground);
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
+    font-family: inherit !important;
+}
