@@ -1,21 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { useState } from "react";
 import { homefooterLinks } from "../../assets/assets";
 import { SiGithub } from "react-icons/si";
-import { Mail, Check } from "lucide-react";
+import { Mail } from "lucide-react";
 
-export default function Footer() {
-    const [copied, setCopied] = useState(false);
-    const email = "naynprajpti@gmail.com";
+export default function Footer() {    
 
-    const handleMailClick = () => {
-        navigator.clipboard.writeText(email).then(() => {
-            setCopied(true);
-            setTimeout(() => setCopied(false), 2000);
-        }).catch(() => {});
-    };
 
     return (
         <footer className="border-t border-border py-12 bg-[var(--footer-bg)] text-white">
