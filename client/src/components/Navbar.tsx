@@ -35,7 +35,7 @@ export default function Navbar() {
                 <div className="flex items-center justify-between h-15">
                     {/* Logo */}
                     <Link to="/" className="flex items-center gap-2 group">
-                         <img src="/AuditMaster_logo_whitebg.png" alt="AuditMaster logo" className="h-8 w-8 object-contain" />
+                         <img src="/AuditMaster_logo_Navbar.png" alt="AuditMaster logo" className="h-8 w-8 object-contain" />
                         <span className="dm-serif text-3xl text-primary-dark">AuditMaster</span>
                     </Link>
 

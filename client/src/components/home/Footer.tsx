@@ -1,8 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
+
+import { useState } from "react";
 import { homefooterLinks } from "../../assets/assets";
-import { SiX, SiInstagram, SiFacebook, SiTwitch } from "@icons-pack/react-simple-icons";
+import { SiGithub } from "react-icons/si";
+import { Mail, Check } from "lucide-react";
 
 export default function Footer() {
+    const [copied, setCopied] = useState(false);
+    const email = "naynprajpti@gmail.com";
+
+    const handleMailClick = () => {
+        navigator.clipboard.writeText(email).then(() => {
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        }).catch(() => {});
+    };
+
     return (
         <footer className="border-t border-border py-12 bg-[var(--footer-bg)] text-white">
             <div className="max-w-7xl mx-auto px-4">
@@ -13,18 +27,25 @@ export default function Footer() {
                             <span className="text-xl text-white">AuditMaster</span>
                         </div>
                         <p className="text-sm text-white/70 mb-6 w-5/6">Audit your website, track your Google rankings, and see exactly how you stack up against the competition — powered by AuditMaster AI.</p>
-                        <div className="flex items-center gap-4">
-                            <a href="#" className="text-white/70 hover:text-white transition-colors">
-                                <SiX size={20} />
+                        <div className="flex flex-col gap-3">
+                            <h4 className="text-white text-sm font-medium mb-1">Connect</h4>
+                            <a 
+                                href="https://github.com/Nayan091/AuditMaster" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="flex items-center gap-2 text-white/70 hover:text-white hover:underline underline-offset-4 transition-colors w-fit"
+                            >
+                                <SiGithub size={18} />
+                                <span className="text-sm">See on GitHub</span>
                             </a>
-                            <a href="#" className="text-white/70 hover:text-white transition-colors">
-                                <SiInstagram size={20} />
-                            </a>
-                            <a href="#" className="text-white/70 hover:text-white transition-colors">
-                                <SiFacebook size={20} />
-                            </a>
-                            <a href="#" className="text-white/70 hover:text-white transition-colors">
-                                <SiTwitch size={20} />
+                            <a 
+                                href="https://mail.google.com/mail/?view=cm&fs=1&to=nayanprajapati138@gmail.com" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="flex items-center gap-2 text-white/70 hover:text-white hover:underline underline-offset-4 transition-colors w-fit"
+                            >
+                                <Mail size={18} />
+                                <span className="text-sm">nayanprajapati138@gmail.com</span>
                             </a>
                         </div>
                     </div>
@@ -54,4 +75,4 @@ export default function Footer() {
             </div>
         </footer>
     );
-}
+}   
